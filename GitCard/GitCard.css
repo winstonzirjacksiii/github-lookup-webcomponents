@@ -4,17 +4,21 @@
   border-radius: 5px;
   border: 1px solid grey;
   font-family: Helvetica;
-  margin: 3px;
-  width: 30%;
+  margin: 3px;padding:5px;
+  width: auto;
+  box-shadow: 3px 3px 4px;
+  text-align:center;
 }
 
 .git__user-card-container:hover {
-  box-shadow: 3px 3px 3px;
+  box-shadow:none;
 }
 
 .git__hidden-content {
   display: none;
 }
+
+.git__avatar {width:100%;}
 
 .git__details-btn {
   background-color: #dedede;

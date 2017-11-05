@@ -21,7 +21,7 @@ class GitCard extends HTMLElement {
 
 
     fetch(url)
-      .then((response) => {response.text()})
+      .then((response) => response.text())
       .then((responseText) => {
         this.render(JSON.parse(responseText))
       })
@@ -33,7 +33,7 @@ class GitCard extends HTMLElement {
 
   render(gitData) {
     this.shadowRoot.querySelector('.git__full-name').innerHTML = gitData.name;
-    this.shadowRoot.querySelector('.git__user-name').innerHTML = gitData.username;
+    this.shadowRoot.querySelector('.git__user-name').innerHTML = gitData.login;
     this.shadowRoot.querySelector('.git__website').href = gitData.url;
     this.shadowRoot.querySelector('.git__website').innerHTML = gitData.url;
     this.shadowRoot.querySelector('.git__avatar').src = gitData.avatar_url;
@@ -45,7 +45,7 @@ class GitCard extends HTMLElement {
     let el = this.shadowRoot.querySelector('.git__hidden-content'),
         btn = this.shadowRoot.querySelector('.git__details-btn')
 
-        btn.innerHTML = el.style.display 'none' ? 'Less Deets' : 'More Details'
+        btn.innerHTML = el.style.display == 'none' ? 'Less Deets' : 'More Details'
         el.style.display = el.style.display == 'none' ? 'block' : 'none'    
   }
 }

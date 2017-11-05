@@ -10,6 +10,7 @@
   opacity:0;
   -webkit-transition:opacity 1s ease-in;
   transition:opacity 1s ease-in;
+  vertical-align: top;
 }
 
 .git__user-card-container:hover {

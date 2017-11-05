@@ -9,36 +9,45 @@ class GitCard extends HTMLElement {
     })
   }
 
+  attributeChangedCallback() {
+    this.fetchAndSet()
+  }
   connectedCallback() {
     const shadowRoot = this.attachShadow({mode: 'open'}),
-          template = currentDocument.getElementById("git-card-template"),
-          instance = template.content.cloneNode(true)
+      template = currentDocument.getElementById("git-card-template"),
+      instance = template.content.cloneNode(true)
 
-    shadowRoot.appendChild(instance)
+    shadowRoot.appendChild(instance)   
+    this.fetchAndSet()
+  }
 
-    const gitId = this.getAttribute('git-id'),
-          url = "https://api.github.com/users/" + gitId
+  fetchAndSet() {
+    if (this.getAttribute("data-git-id")) {
+      const gitId = this.getAttribute('data-git-id'),
+            url = "https://api.github.com/users/" + gitId
 
 
-    fetch(url)
-      .then((response) => response.text())
-      .then((responseText) => {
-        this.render(JSON.parse(responseText))
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-
+      fetch(url)
+        .then((response) => response.text())
+        .then((responseText) => {
+          this.render(JSON.parse(responseText))
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    }
   }
 
   render(gitData) {
-    this.shadowRoot.querySelector('.git__full-name').innerHTML = gitData.name;
-    this.shadowRoot.querySelector('.git__user-name').innerHTML = gitData.login;
-    this.shadowRoot.querySelector('.git__website').href = gitData.url;
-    this.shadowRoot.querySelector('.git__website').innerHTML = gitData.url;
-    this.shadowRoot.querySelector('.git__avatar').src = gitData.avatar_url;
+    if (gitData) {
+      this.shadowRoot.querySelector('.git__full-name').innerHTML = gitData.name;
+      this.shadowRoot.querySelector('.git__user-name').innerHTML = gitData.login;
+      this.shadowRoot.querySelector('.git__website').href = gitData.url;
+      this.shadowRoot.querySelector('.git__website').innerHTML = gitData.url;
+      this.shadowRoot.querySelector('.git__avatar').src = gitData.avatar_url;
 
-    this.shadowRoot.querySelector('.git__user-card-container').classList.add("is-visible")
+      this.shadowRoot.querySelector('.git__user-card-container').classList.add("is-visible")
+    }
   }
 
   clickHandler() {

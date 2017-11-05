@@ -37,6 +37,8 @@ class GitCard extends HTMLElement {
     this.shadowRoot.querySelector('.git__website').href = gitData.url;
     this.shadowRoot.querySelector('.git__website').innerHTML = gitData.url;
     this.shadowRoot.querySelector('.git__avatar').src = gitData.avatar_url;
+
+    this.shadowRoot.querySelector('.git__user-card-container').classList.add("is-visible")
   }
 
   clickHandler() {

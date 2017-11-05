@@ -1,21 +1,19 @@
 .git__user-card-container {
-  text-align: center;
-  display: inline-block;
-  border-radius: 5px;
-  border: 1px solid grey;
   font-family: Helvetica;
-  margin: 3px;padding:5px;
-  width: auto;
-  box-shadow: 3px 3px 4px;
+  display: inline-block;
+  border-radius:5px;
+  border:1px solid grey;
+  margin:3px;padding:5px;
+  width:auto;
+  box-shadow:1px 2px 4px #ccc;
   text-align:center;
+  opacity:0;
+  -webkit-transition:opacity 1s ease-in;
+  transition:opacity 1s ease-in;
 }
 
 .git__user-card-container:hover {
   box-shadow:none;
-}
-
-.git__hidden-content {
-  display: none;
 }
 
 .git__avatar {width:100%;}
@@ -25,3 +23,5 @@
   padding: 6px;
   margin-bottom: 8px;
 }
+
+.is-visible {opacity:1;}

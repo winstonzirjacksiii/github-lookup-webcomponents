@@ -1,0 +1,20 @@
+{
+  "name": "github-lookup-webcomponents",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "static-server": "*"
+  },
+  "scripts": {
+    "start": "static-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winstonzirjacksiii/github-lookup-webcomponents.git"
+  },
+  "keywords": [
+    "Tech Demo",
+    "Web Components"
+  ],
+  "author": "Winston Zirjacks"
+}
